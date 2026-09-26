@@ -2,24 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:news/api/model/category/category.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/utils/app_colors.dart';
+import 'package:news/utils/category_localization.dart';
 import 'package:news/utils/size_utils.dart';
-
 class CategoryItem extends StatelessWidget {
   final Category category;
 
   final int index;
 
   const CategoryItem({super.key, required this.category, required this.index});
-
   @override
   Widget build(BuildContext context) {
     var height = context.height;
     var width = context.width;
     var isEven = (index % 2 == 0);
     return Stack(
-      alignment: isEven
-          ? AlignmentDirectional.bottomEnd
-          : AlignmentDirectional.bottomStart,
+      alignment: isEven ? Alignment.bottomRight : Alignment.bottomLeft,
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(24),
@@ -28,11 +25,14 @@ class CategoryItem extends StatelessWidget {
         Column(
           spacing: height * 0.03,
           children: [
-            Text(category.title, style: Theme.of(context).textTheme.bodyLarge),
+            Text(getCategoryTitle(context, category), style: Theme
+                .of(context)
+                .textTheme
+                .bodyLarge),
             Container(
-              padding: EdgeInsetsDirectional.only(
-                start: isEven ? width * 0.04 : 0,
-                end: !isEven ? width * 0.04 : 0,
+              padding: EdgeInsets.only(
+                left: isEven ? width * 0.04 : 0,
+                right: !isEven ? width * 0.04 : 0,
               ),
               margin: EdgeInsets.symmetric(
                 horizontal: width * 0.04,

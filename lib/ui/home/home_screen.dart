@@ -5,6 +5,7 @@ import 'package:news/ui/home/category_details/category_details.dart';
 import 'package:news/ui/home/category_fragment/category_fragment.dart';
 import 'package:news/ui/home/drawer/home_drawer.dart';
 import 'package:news/utils/app_colors.dart';
+import 'package:news/utils/category_localization.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,13 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(selectedCategory == null ?
-        AppLocalizations.of(context)!.home : selectedCategory!.title,
-            style: Theme
-                .of(context)
-                .textTheme
-                .headlineLarge),
-      ),
+        title: Text(
+          selectedCategory == null
+              ? AppLocalizations.of(context)!.home
+              : getCategoryTitle(context, selectedCategory!),
+          style: Theme
+              .of(context)
+              .textTheme
+              .headlineLarge,
+        ),),
       body: selectedCategory == null ?
       CategoryFragment(onCategoryItemClick: onCategoryItemClick,) :
       CategoryDetails(category: selectedCategory!,),
