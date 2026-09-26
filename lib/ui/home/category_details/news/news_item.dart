@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news/api/model/news/articles.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/ui/widgets/main_loading_widget.dart';
+import 'package:news/utils/app_styles.dart';
 import 'package:news/utils/size_utils.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -43,7 +44,7 @@ class NewsItem extends StatelessWidget {
               Expanded(
                 child: Text(
                   '${AppLocalizations.of(context)!.by}${news.author} ',
-                  style: Theme.of(context).textTheme.labelLarge,
+                  style: AppStyles.medium12Grey,
                 ),
               ),
               Text(
@@ -52,7 +53,7 @@ class NewsItem extends StatelessWidget {
                     news.publishedAt ?? DateTime.now().toIso8601String(),
                   ),
                 ),
-                style: Theme.of(context).textTheme.labelLarge,
+                style: AppStyles.medium12Grey,
               ),
             ],
           ),

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.homeRouteName,
       routes: {
-        AppRoutes.homeRouteName: (context) => const HomeScreen(),
+        AppRoutes.homeRouteName: (context) => HomeScreen(),
       },
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
