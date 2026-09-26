@@ -28,7 +28,7 @@ class AppAssets {
 
   static const String technologyDark = 'assets/images/technologyDark.png';
 
-  static const String homeIcon = 'assets/images/homeIcon.png';
+  static const String homeIcon = 'assets/images/home.png';
 
   static const String themeIcon = 'assets/images/themeIcon.png';
 
