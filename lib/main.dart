@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/l10n/app_localizations.dart';
 import 'package:news/providers/app_language_provider.dart';
 import 'package:news/providers/app_theme_provider.dart';
 import 'package:news/ui/home/home_screen.dart';
@@ -21,6 +22,8 @@ class MyApp extends StatelessWidget {
     var languageProvider = Provider.of<AppLanguageProvider>(context);
 
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       debugShowCheckedModeBanner: false,
       initialRoute: AppRoutes.homeRouteName,
       routes: {

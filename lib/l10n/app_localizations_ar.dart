@@ -71,4 +71,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get search => 'بحث';
+
+  @override
+  String get noNews => 'لا يوجد اخبار في هذا المصدر';
 }
