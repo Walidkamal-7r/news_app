@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/l10n/app_localizations.dart';
+import 'package:news/ui/home/category_fragment/category_fragment.dart';
 import 'package:news/ui/home/drawer/home_drawer.dart';
 import 'package:news/utils/app_colors.dart';
 
@@ -15,8 +16,7 @@ class HomeScreen extends StatelessWidget {
             .textTheme
             .headlineLarge),
       ),
-      // body: CategoryDetails(),
-      body: Container(),
+      body: CategoryFragment(),
       drawer: Drawer(
         backgroundColor: AppColors.blackColor,
         child: HomeDrawer(),

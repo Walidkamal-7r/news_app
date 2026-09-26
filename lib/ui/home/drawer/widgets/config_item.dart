@@ -13,7 +13,6 @@ class ConfigItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var width = context.width;
-    var height = context.height;
     return Container(
       margin: EdgeInsets.symmetric(horizontal: width * 0.04),
       decoration: BoxDecoration(
