@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news/api/api_manager.dart';
+import 'package:news/api/dio/CustomException.dart';
+import 'package:news/api/dio/dio_manager.dart';
 import 'package:news/api/model/category/category.dart';
 import 'package:news/ui/home/category_details/sources/source_tab.dart';
 import 'package:news/ui/widgets/main_error_widget.dart';
@@ -18,35 +19,33 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: ApiManager.getSources(widget.category.id),
+        future: DioManager().getSources(widget.category.id),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return MainLoadingWidget();
           } else if (snapshot.hasError) {
-            return MainErrorWidget(
-                errorMessage: snapshot.error.toString(),
-                onPressed: () {
-                  ApiManager.getSources(widget.category.id);
-                  setState(() {
+            final error = snapshot.error;
+            final errorMessage = error is CustomException
+                ? error.message
+                : 'An unexpected error occurred. Please try again.';
 
-                  });
-                }
-            );
+            return MainErrorWidget(
+                errorMessage: errorMessage,
+                onPressed: () {
+                  DioManager().getSources(widget.category.id);
+                  setState(() {});
+                });
           } else if (snapshot.data?.status != 'ok') {
             return MainErrorWidget(
-                errorMessage: snapshot.data!.message!,
+                errorMessage: snapshot.data?.message ?? 'Something went wrong.',
                 onPressed: () {
-                  ApiManager.getSources(widget.category.id);
-                  setState(() {
-
-                  });
-                }
-            );
+                  DioManager().getSources(widget.category.id);
+                  setState(() {});
+                });
           } else {
             var sourcesList = snapshot.data?.sources ?? [];
             return SourceTab(sourcesList: sourcesList);
           }
-        }
-    );
+        });
   }
 }
