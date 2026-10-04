@@ -12,43 +12,43 @@ class Category {
       Category(
         id: 'general',
         title: 'General',
-        imagePath: isDarkMode ? AppAssets.generalLight : AppAssets.generalDark,
+        imagePath: isDarkMode ? AppAssets.generalDark : AppAssets.generalLight,
       ),
       Category(
         id: 'business',
         title: 'Business',
         imagePath: isDarkMode
-            ? AppAssets.businessLight
-            : AppAssets.businessDark,
+            ? AppAssets.businessDark
+            : AppAssets.businessLight,
       ),
       Category(
         id: 'entertainment',
         title: 'Entertainment',
         imagePath: isDarkMode
-            ? AppAssets.entertainmentLight
-            : AppAssets.entertainmentDark,
+            ? AppAssets.entertainmentDark
+            : AppAssets.entertainmentLight,
       ),
       Category(
         id: 'health',
         title: 'Health',
-        imagePath: isDarkMode ? AppAssets.healthLight : AppAssets.healthDark,
+        imagePath: isDarkMode ? AppAssets.healthDark : AppAssets.healthLight,
       ),
       Category(
         id: 'science',
         title: 'Science',
-        imagePath: isDarkMode ? AppAssets.scienceLight : AppAssets.scienceDark,
+        imagePath: isDarkMode ? AppAssets.scienceDark : AppAssets.scienceLight,
       ),
       Category(
         id: 'technology',
         title: 'Technology',
         imagePath: isDarkMode
-            ? AppAssets.technologyLight
-            : AppAssets.technologyDark,
+            ? AppAssets.technologyDark
+            : AppAssets.technologyLight,
       ),
       Category(
         id: 'sports',
         title: 'Sports',
-        imagePath: isDarkMode ? AppAssets.sportsLight : AppAssets.sportsDark,
+        imagePath: isDarkMode ? AppAssets.sportsDark : AppAssets.sportsLight,
       ),
     ];
   }
