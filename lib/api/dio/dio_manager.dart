@@ -12,12 +12,16 @@ class DioManager {
       baseUrl: 'https://newsapi.org',
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 3),
-      // queryParameters: {
-      //   'apiKey': ApiConstants.apiKey,
-      // },
       headers: {'X-Api-Key': ApiConstants.apiKey},
     ),
-  );
+        )
+        ..interceptors.add(
+          PrettyDioLogger(
+            requestHeader: true,
+            requestBody: true,
+            responseHeader: true,
+          ),
+        );
 
   DioManager() {
     dio.interceptors.add(
