@@ -7,8 +7,9 @@ import 'package:news/api/model/sources/source_response.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioManager {
-  static final Dio dio = Dio(
-    BaseOptions(
+  final Dio dio =
+      Dio(
+          BaseOptions(
       baseUrl: 'https://newsapi.org',
       connectTimeout: const Duration(seconds: 5),
       receiveTimeout: const Duration(seconds: 3),

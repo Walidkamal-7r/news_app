@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:news/api/dio/CustomException.dart';
-import 'package:news/api/dio/dio_manager.dart';
 import 'package:news/api/model/news/articles.dart';
+import 'package:news/data/repository/news/repository/news_repository.dart';
 
 class NewsViewModel extends ChangeNotifier {
-  final DioManager _dioManager = DioManager();
+  NewsRepository newsRepository;
+
+  NewsViewModel({required this.newsRepository});
 
   List<News>? newsList;
   String? errorMessage;
@@ -16,7 +18,7 @@ class NewsViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      var response = await _dioManager.getNewsBySourceId(sourceId);
+      var response = await newsRepository.getNewsBySourceId(sourceId);
       if (response.status == 'ok') {
         newsList = response.articles;
       } else {

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:news/api/dio/CustomException.dart';
-import 'package:news/api/dio/dio_manager.dart';
 import 'package:news/api/model/sources/source.dart';
+import 'package:news/data/repository/sources/repository/source_repository.dart';
 
 class SourceViewModel extends ChangeNotifier {
-  final DioManager _dioManager = DioManager();
+  SourceRepository sourceRepository;
+
+  SourceViewModel({
+    required this.sourceRepository,
+  });
 
   List<Source>? sourcesList;
   String? errorMessage;
@@ -16,7 +20,7 @@ class SourceViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      var response = await _dioManager.getSources(categoryId);
+      var response = await sourceRepository.getSources(categoryId);
       if (response.status == 'ok') {
         sourcesList = response.sources;
       } else {
