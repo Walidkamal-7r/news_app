@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/api/model/sources/source.dart';
+import 'package:news/di/di.dart';
 import 'package:news/l10n/app_localizations.dart';
 import 'package:news/ui/home/category_details/news/cubit/news_cubit.dart';
 import 'package:news/ui/home/category_details/news/cubit/news_states.dart';
@@ -20,7 +21,8 @@ class NewsWidget extends StatefulWidget {
 }
 
 class _NewsWidgetState extends State<NewsWidget> {
-  NewsViewModel viewModel = NewsViewModel();
+  NewsViewModel viewModel = NewsViewModel(
+      newsRepository: injectNewsRepository());
 
   @override
   void initState() {
