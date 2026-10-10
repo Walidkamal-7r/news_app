@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news/api/model/category/category.dart';
+import 'package:news/di/di.dart';
+import 'package:news/ui/home/category_details/source_view_model.dart';
 import 'package:news/ui/home/category_details/sources/cubit/source_cubit.dart';
 import 'package:news/ui/home/category_details/sources/cubit/source_states.dart';
 import 'package:news/ui/home/category_details/sources/source_tab.dart';
@@ -17,6 +19,8 @@ class CategoryDetails extends StatefulWidget {
 }
 
 class _CategoryDetailsState extends State<CategoryDetails> {
+  SourceViewModel viewModel = SourceViewModel(
+      sourceRepository: injectSourceRepository());
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
